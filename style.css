@@ -1,33 +1,100 @@
-/* .main{
-    background: url(WhatsApp\ Image\ 2025-02-21\ at\ 14.33.44_4795b3df.jpg)no-repeat;
-    background-size: cover;
-    width: 100%;
-    height: 100vh;
-    color: aliceblue;
+:root{--bg:#050505;--ink:#f4f1ec;--muted:#8d8a85;--line:#1f1f1f;--o:#ff4d1c;--o2:#d93a0f;--card:#0c0c0c}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{background:var(--bg);color:var(--ink);font:400 1rem/1.65 Inter,system-ui,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--o);outline-offset:3px}
+.edge{position:fixed;left:0;top:0;bottom:0;width:2px;background:linear-gradient(var(--o),transparent 90%);z-index:3}
+.nav{position:fixed;top:1rem;left:50%;transform:translateX(-50%);z-index:20;display:flex;align-items:center;gap:1.4rem;padding:.45rem 1.3rem .45rem .5rem;background:rgba(10,10,10,.75);backdrop-filter:blur(12px);border:1px solid #232323;border-radius:99px;font-size:.8rem;font-weight:500}
+.mark{display:grid;place-items:center;width:1.9rem;height:1.9rem;border-radius:50%;background:var(--o);color:#fff;font:700 .9rem Fredoka}
+.nav nav{display:flex;gap:1.3rem}
+.nav nav a{color:var(--muted)}.nav nav a.on,.nav nav a:hover{color:#fff}
+.title,.big,h1,h2.sub{font-family:Anton,Impact,sans-serif;font-weight:400;text-transform:uppercase}
+/* hero */
+.hero{position:relative;min-height:100svh;max-width:1300px;margin:auto;padding:7rem clamp(1.2rem,5vw,4rem) 4rem;display:grid;grid-template-columns:1fr 1fr;align-items:end;overflow:hidden}
+.big{position:absolute;top:5.5rem;left:50%;transform:translateX(-50%);font-size:clamp(5rem,22vw,19rem);line-height:.9;letter-spacing:-.01em;background:linear-gradient(#ff5a26 40%,#6d1a05 100%);-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap;user-select:none}
+.me{position:absolute;right:50%;transform:translateX(38%);bottom:0;height:min(86svh,760px);width:auto;max-width:none;filter:drop-shadow(0 0 40px rgba(255,60,10,.25))}
+.intro{position:relative;z-index:2;align-self:center;padding-top:6rem}
+.hi{font:700 1.5rem Fredoka;margin-bottom:-.4rem}
+h1{font-size:clamp(3.2rem,8vw,6.2rem);line-height:.95}
+h1 span{color:var(--o)}
+.intro h2{font:400 clamp(1.5rem,3vw,2.2rem)/1.1 Anton;color:var(--o);margin:.8rem 0 1rem;letter-spacing:.01em}
+.blurb{max-width:28rem;font-size:.95rem;margin-bottom:1.4rem}
+.btn{display:inline-flex;gap:.5rem;align-items:center;background:var(--o);color:#fff;font:500 .75rem "JetBrains Mono",monospace;letter-spacing:.08em;padding:.8rem 1.3rem;border:0;border-radius:.5rem;cursor:pointer;transition:background .2s}
+.btn:hover{background:var(--o2)}
+.meta{margin-top:1.4rem;color:var(--muted);font:400 .68rem "JetBrains Mono",monospace;letter-spacing:.12em;text-transform:uppercase}
+.stats{position:absolute;right:clamp(1.2rem,5vw,4rem);top:42%;z-index:2;list-style:none;display:grid;gap:1.4rem;text-align:left}
+.stats b{display:block;font:400 2.2rem/1 Anton;color:var(--o)}
+.stats small{color:var(--muted);font:.6rem "JetBrains Mono",monospace;letter-spacing:.12em;text-transform:uppercase}
+/* marquee */
+.marquee{border-block:1px solid var(--line);overflow:hidden;padding:1rem 0;background:#080808}
+.marquee div{display:flex;gap:2.2rem;width:max-content;animation:slide 32s linear infinite;color:var(--muted);font:400 1.5rem Anton;text-transform:uppercase}
+.marquee span:after{content:"•";color:var(--o);margin-left:2.2rem}
+@keyframes slide{to{transform:translateX(-50%)}}
+/* sections */
+.sec{max-width:1200px;margin:auto;padding:clamp(4rem,9vw,7rem) clamp(1.2rem,5vw,4rem)}
+.eyebrow{color:var(--o);font:500 .68rem "JetBrains Mono",monospace;letter-spacing:.18em;text-transform:uppercase;margin-bottom:.8rem}
+.title{font-size:clamp(3rem,8vw,6.2rem);line-height:.95}
+.title em{font-style:normal;color:var(--o)}
+.head{display:flex;justify-content:space-between;gap:2rem;align-items:end;flex-wrap:wrap}
+.side{max-width:26rem;color:var(--muted);font-size:.92rem}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:3.5rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:.6rem;padding:1.6rem;transition:border-color .25s}
+.card:hover{border-color:var(--o)}
+.card .top{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-bottom:.8rem}
+.n{font:400 2.6rem/1 Anton;color:var(--o)}
+.role{color:var(--muted);font:.6rem "JetBrains Mono",monospace;letter-spacing:.12em;text-transform:uppercase;text-align:right}
+.card h3{font:400 1.7rem/1.1 Anton;text-transform:uppercase;margin-bottom:.8rem}
+.card ul{padding-left:1rem;color:#b9b6b0;font-size:.9rem}.card li{margin:.35rem 0}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.1rem}
+.chips span{border:1px solid #2a2a2a;border-radius:.3rem;padding:.15rem .6rem;color:var(--muted);font:.65rem "JetBrains Mono",monospace}
+/* track */
+.track{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.num{font:400 clamp(6rem,16vw,12rem)/1 Anton;color:var(--o);margin-top:1rem}
+.num i{display:inline-block;width:.14em;height:.14em;background:var(--ink);margin-left:.05em}
+.rows{list-style:none}
+.rows li{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.1rem 0;border-bottom:1px solid var(--line)}
+.rows b{display:block;font-weight:600}.rows small{color:var(--muted);font:.62rem "JetBrains Mono",monospace;letter-spacing:.1em;text-transform:uppercase}
+.rows span{font:400 1.6rem Anton;color:var(--o)}
+/* about */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin:2rem 0 3rem;color:#cfcbc4;max-width:60rem}
+.about-grid{display:grid;grid-template-columns:1fr 1.1fr .8fr;gap:2.5rem;align-items:start}
+.stack{display:grid;grid-template-columns:5.5rem 1fr;gap:.8rem 1rem;font-size:.88rem}
+.stack dt{color:var(--muted);font:.62rem "JetBrains Mono",monospace;letter-spacing:.16em;text-transform:uppercase;padding-top:.25rem}
+.stack dd{margin:0;text-align:right}
+.how{list-style:none;counter-reset:s;display:grid;gap:1.2rem}
+.how li{counter-increment:s;display:grid;grid-template-columns:2rem 1fr;column-gap:.6rem}
+.how li:before{content:"0" counter(s);color:var(--o);font:400 1.1rem Anton;grid-row:span 2}
+.how span{color:var(--muted);font-size:.85rem}
+.quote{background:var(--o);color:#150500;font:400 1.7rem/1.1 Anton;padding:1.6rem;transform:rotate(2deg)}
+.quote small{display:block;margin-top:1.2rem;font:500 .85rem Inter;text-transform:none}
+/* contact */
+.contact{display:grid;grid-template-columns:1.2fr .8fr;gap:3rem;align-items:center}
+.contact form{display:grid;gap:.7rem;max-width:30rem;margin-top:1.6rem}
+input,textarea{background:#0d0d0d;border:1px solid #262626;color:var(--ink);border-radius:.4rem;padding:.75rem .9rem;font:inherit;width:100%}
+.contact .btn{justify-self:start}
+.ship{background:#0a0a0a;border:2px solid var(--o);padding:1.8rem;display:grid;gap:.6rem;transform:rotate(-1.5deg)}
+.ship h3{font:400 clamp(2.4rem,5vw,3.6rem)/.95 Anton;text-transform:uppercase;margin-bottom:.8rem}
+.ship em{font-style:normal;color:var(--o)}
+.ship a{color:#cfcbc4;border-bottom:1px solid #222;padding-bottom:.4rem;font-size:.92rem}.ship a:hover{color:var(--o)}
+footer{text-align:center;color:var(--muted);font:.65rem "JetBrains Mono",monospace;letter-spacing:.12em;text-transform:uppercase;padding:2rem 1rem 6rem;border-top:1px solid var(--line)}
+/* agents */
+#agents{position:fixed;inset:0;pointer-events:none;z-index:10;overflow:hidden}
+.ag{position:absolute;display:flex;align-items:flex-start;gap:.15rem;transition:transform 3.2s cubic-bezier(.4,.1,.2,1),opacity .4s}
+.ag svg{width:.8rem;height:.8rem;fill:currentColor}
+.ag span{background:currentColor;border-radius:.3rem;padding:.12rem .5rem;font:500 .62rem "JetBrains Mono",monospace;margin-top:.55rem}
+.ag span b{color:#0a0a0a;font-weight:500}
+body.off #agents{opacity:0}
+.status{position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);z-index:20;display:flex;align-items:center;gap:1rem;background:rgba(10,10,10,.85);backdrop-filter:blur(10px);border:1px solid #232323;border-radius:99px;padding:.4rem .5rem .4rem 1rem;font:500 .62rem "JetBrains Mono",monospace;letter-spacing:.1em;white-space:nowrap}
+.status button{background:none;border:0;color:var(--ink);font:inherit;letter-spacing:inherit;cursor:pointer}
+.status .stop{background:var(--o);padding:.4rem .8rem;border-radius:99px;color:#fff}
+.dot{display:inline-block;width:.4rem;height:.4rem;border-radius:50%;background:#35d07f;margin-right:.4rem}
+@media(max-width:860px){
+ .hero{grid-template-columns:1fr;padding-top:6rem;min-height:auto}
+ .me{position:relative;transform:none;right:auto;margin:-4rem auto 0;display:block;height:60svh;order:2}
+ .big{top:4.5rem}.intro{padding-top:5rem}.stats{display:none}
+ .cards,.track,.cols,.about-grid,.contact{grid-template-columns:1fr}
+ .quote{transform:none}.ship{transform:none}
+ .nav nav{gap:.9rem}
 }
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 10;
-    
-}
-.main h3{
-    font-size: 55px;
-    font-weight: 700;
-}
-.main h6{
-    font-size: 25px;
-    text-transform: uppercase;
-    /* line-height: 1; */
-    /* border-bottom: 3px solid rgb(248, 5, 17); */
-    /* width: 40%;
-}
-
-
-.one{
-    background: linear-gradient(135deg, #efecf0, #feb47b);
-
-
-} */ 
+@media(prefers-reduced-motion:reduce){.marquee div{animation:none}.ag{transition:none}html{scroll-behavior:auto}}
